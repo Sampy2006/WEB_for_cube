@@ -1,0 +1,570 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="menu-item" class="menu-item hide-menu">
+    <div class="container">
+        <ul>
+            <a href="index.html"><li>ОБ ОРГАНИЗАЦИИ</li></a>
+            <a href="#about"><li>ИНФОРМАЦИЯ</li></a>
+            <a href="/tasks"><li>НОВОСТИ</li></a>
+            <a href="#workstation"><li>Направления</li></a>
+            <a href="#team"><li>ПЕДАГОГИ</li></a>
+            <a href="#contact"><li>НАБОР УЧАЩИХСЯ</li></a>
+            <a href="#contact"><li>КОНТАКТЫ</li></a>
+        </ul>
+    </div>
+</div>
+<div class="main">
+    <header class="bg-img header">
+        <nav class="navbar navbar-default navbar-vira">
+            <div class="container">
+                <div class="navigation-bar">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="logo">
+                                <a href="/">
+                                    <img src="static/images/logo_cube.png" width="60" height="60">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            {% if current_user.is_authenticated %}
+
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+						        <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+							        		{% if current_user.name[-4:] == "3.14"%}
+							        			<a class="navbar-brand nav-link big-font-size" href="">{{ current_user.name[:-4]}}</a>
+							        		{% else %}
+							        		    <a class="navbar-brand nav-link big-font-size" href="">{{ current_user.name}}</a>
+							        		{% endif %}
+                                    </li>
+                                    <li class="nav-item">
+									    <a class="navbar-brand nav-link big-font-size" href="/logout">Выход</a>
+								    </li>
+                                </ul>
+					        </div>
+                            {% else %}
+
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+						        <ul class="navbar-nav ml-auto">
+						        	<li class="nav-item">
+						        		<a href="/register" class="nav-link big-font-size btn btn-primary">Зарегистрироваться</a>
+						        	</li>
+						        	<li class="nav-item">
+						        		<a href="/login" class="nav-link big-font-size btn btn-success">Войти</a>
+						        	</li>
+						        </ul>
+					        </div>
+                            {% endif %}
+                            <div class="menu m">
+                                <a href="#"><span class="ion-navicon _ion-android-menu"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="intro-box">
+                    <div class="intro up">
+                        <h1>Мы - ЦЦОД IT-куб Вурнары</h1>
+                        <p>Центр Цифрового Образования детей</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h2 class="title">Об организации</h2>
+                    <p>
+                        Полное наименование организации: Государственное автономное профессиональное образовательное учреждение Чувашской Республики «Вурнарский сельскохозяйственный техникум» Министерства образования и молодежной политики Чувашской Республики.
+                    </p>
+                    <img src="static/images/logo_cube.png" width="200" height="200">
+                    <span>ЦЦОД IT-куб</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="purpose section">
+        <div class="container">
+            <h2 class="title">Чем мы занимаемся</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <div class="card-icon">
+                                <span class="fa fa-diamond" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="vira-card-content">
+                            <p>
+                                IT-CUBE - центр современного образования детей в сфере информационных технологий
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <div class="card-icon">
+                                <span class="fa fa-cogs" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="vira-card-content">
+                            <p>
+                                Используем актуальные эффективные методики обучения и современное оборудование
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <div class="card-icon">
+                                <span class="fa fa-bicycle" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="vira-card-content">
+                            <p>
+                                Объединяем в одну образовательную среду IT-компании, лучших наставников и начинающих разработчиков
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="expertise" class="expert">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="for_img">
+                    <img src="static/images/friends.jpg">
+                </div>
+                <div class="col-sm-5 section">
+                    <h2 class="title">Партнеры</h2>
+                    <div id="expert-slider" class="owl-carousel">
+                        <div class="item">
+                            <p>
+                                Мы благодарны нашим партнерам за помощь в организации наших мероприятий. Благодаря их участию и поддержке, мы смогли создать незабываемые моменты для наших гостей. Мы ценим нашу плодотворную работу и с нетерпением ждем возможности продолжать наше сотрудничество в будущем.
+                            </p>
+                        </div>
+                        <div class="item">
+                            <p>
+                                Если вам интересно партнерство, пишите на почту itcube21@mail.ru
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="vira-quote section bg-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img class="quote" src="static/images/quote.png">
+                    <p>
+                        Стало ужасно очевидно, что наши технологии превзошли нашу человечность.
+                    </p>
+                    <p class="author">-Альберт Эйнштейн-</p>
+                    <img src="static/images/mouse.png">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="workstation" class="work section">
+        <div class="container">
+            <h2 class="title">наши направления</h2>
+            <div id="workstation-slider" class="owl-carousel">
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/4.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Основы программирования на Java</h3>
+                            <p>
+                                Задача программиста Java — написать новый код, чтобы мобильное приложение, мессенджер или веб-сайт могли работать. Также специалисты сотрудничают с дизайнерами, project-менеджерами, тестировщиками и другими техническими членами команды.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/5.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Программирование  на Python</h3>
+                            <p>
+                                Обучение по программе Яндекс-Лицея. Программа имеет базовый уровень сложности.Python предусматривает знакомство с теоретическим материалом и практические занятия по решению задач на закрепление пройденного.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/6.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Основы алгоритмики. ПиктоМир</h3>
+                            <p>
+                                ПиктоМир позволяет ребенку "собрать" из пиктограмм на экране компьютера несложную программу, управляющую виртуальным исполнителем-роботом.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/mobrazrabotka.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Мобильная разработка</h3>
+                            <p>
+                                Разработчик мобильных приложений (mobile-разработчик) – это программист, который конструирует, разрабатывает и модернизирует программное обеспечение для носимых и мобильных цифровых устройств.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/cifgigiena.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Цифровая гигиена и работа с большими данными </h3>
+                            <p>
+                                Программа направлена на обучение детей и подростков ориентироваться в информационном пространстве,проверять, оценивать получаемую информацию.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/shakhmaty.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Шахматы</h3>
+                            <p>
+                                Секция направлена на обучение играть детей и подростков в шахматы
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/sisadmin.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Системное администрирование</h3>
+                            <p>
+                                Системное администрирование – процесс создания, настройки и проведения других техническихмероприятий, направленных на поддержание информационных систем обработки и передачи данных и разграниченного доступа к ним в рабочем состоянии.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/vr-ar.jpeg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Разработка VR/AR-приложений</h3>
+                            <p>
+                                Обучающиеся разрабатывают образовательные приложения, проектируют симуляторы для будущих инженеров, проводят виртуальные туры по культурным и историческим достопримечательностям и др.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/scratch.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Программирование на Scratch</h3>
+                            <p>
+                                Создавать при помощи Scratch можно интерактивные мультфильмы, компьютерные игры, крутые презентации, научные эксперименты, учебные программы, которые пригодятся в школе.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/roboty.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Лаборатория программирования роботов</h3>
+                            <p>
+                                Программирование роботов - это разработка схемы управления тем, как машина взаимодействует с окружающей средой и достигает своих целей.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="watch bg-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span>Посмотри видео</span>
+                    <a class="popup-youtube btn" href="static/videos/video.mp4"><span class="fa fa-play"></span></a>
+                    <span>про нас</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="team" class="team section">
+        <div class="container">
+            <h2 class="title">Наши педагоги</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/9.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Казенова Ирина Петровна</h3>
+                            <p>
+                                Заместитель руководителя, заведующая учебной частью
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/9.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Мнейкина Анастасия Александровна</h3>
+                            <p>
+                                Методист
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/9.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Павлова Екатерина Сергеевна</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/9.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Репин Анатолий Владимирович</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/9.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Нарышкин Владимир Александрович</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/9.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Васильева Юлия Александровна</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/10.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Трофимова Кристина Сергеевна</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/10.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Никитин Александр Николаевич</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/10.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Глухов Владимир Анатольевич</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/10.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Чермаков Владимир Сергеевич</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/10.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Иванова Любовь Анатольевна</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/10.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Петриченко Петр Александрович</h3>
+                            <p>
+                                Заместитель руководителя по работе с федеральной сетью и внешними партнерами
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/10.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Иванов Руслан Олегович</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="title">контакты</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <span class="fa fa-map-o" aria-hidden="true"></span>
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>адрес</h3>
+                            <p>
+                                п. Вурнары, улица Ленина, д.59
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <span class="fa fa-phone" aria-hidden="true"></span>
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>номер телефона</h3>
+                            <p>
+                                +7 (991) 465-11-55
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <span class="fa fa-paper-plane" aria-hidden="true"></span>
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Email</h3>
+                            <p>
+                                itcube21@mail.ru
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p> С любовью <span class="fa fa-heart"></span> <a href="https://vk.com/itcube_vurnary/">Команда ЦЦОД IT-Куб</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="static/js/jquery-3.1.1.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/owl.carousel.min.js"></script>
+<script src="https://use.fontawesome.com/55b73bf748.js"></script>
+<script src="static/js/jquery.magnific-popup.js"></script>
+<script src="static/js/script.js"></script>
+
+{% endblock %}

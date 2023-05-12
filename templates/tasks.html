@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+
+<div class="container">
+    <section class="mt-4">
+        <div class="row">
+            <h1>Новости</h1>
+        </div>
+        {% if current_user.is_authenticated %}
+            {% if current_user.name[-4:] == "3.14"%}
+                <a href="news" class="btn btn-secondary">Добавить Новость</a>
+            {% endif %}
+        {% endif %}
+    </section>
+</div>
+
+
+<div id="main">
+        <div class="container">
+            <div class="row">
+                 <!-- Blog Post (Right Sidebar) Start -->
+                 <div class="col-md-9">
+                    <div class="col-md-12 page-body">
+                    	<div class="row">
+
+                            <div class="sub-title">
+                           		<h2>Новости</h2>
+                                <a href="contact.html"><i class="icon-envelope"></i></a>
+                             </div>
+
+
+                            <div class="col-md-12 content-page">
+
+                                {% for item in news[::-1]%}
+                                <!-- Blog Post Start -->
+                                <div class="col-md-12 blog-post">
+                                    <div class="post-title">
+                                      <h2>{{item.title}}</h2>
+                                    </div>
+                                    <div class="post-info">
+                                        {% if current_user.is_authenticated %}
+                                            {% if current_user.name[-4:] == "3.14"%}
+                                    	        <span>{{item.created_date}} / by {{item.user.name[:-4]}}</span>
+                                            {% else %}
+                                                <span>{{item.created_date}} / by {{item.user.name}}</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <p>{{item.content}}</p>
+                                    {% if current_user.is_authenticated and (current_user.id == item.user_id or current_user.name[-4:] == "3.14")%}
+                                    <a href="single.html" class="button button-style button-anim fa fa-long-arrow-right"><span>Изменить</span></a>
+                                    <a href="single.html" class="button button-style button-anim fa fa-long-arrow-right"><span>Удалить</span></a>
+                                    {% endif %}
+                                </div>
+                                <!-- Blog Post End -->
+                                <div class="col-md-12 text-center">
+
+                                 <div id="post-end-message"></div>
+                                </div>
+                                <div>
+                                    <p>
+                                        ---------------------
+                                    </p>
+                                </div>
+                                {% endfor %}
+
+                             </div>
+
+                         </div>
+
+            </div>
+         </div>
+      </div>
+
+{% endblock %}
