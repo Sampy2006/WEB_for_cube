@@ -3,6 +3,46 @@
 {% block content %}
 
 
+<div id="menu-item" class="menu-item hide-menu">
+    <div class="container">
+        <ul>
+            <a href="/"><li>ОБ ОРГАНИЗАЦИИ</li></a>
+            <a href="#about"><li>ИНФОРМАЦИЯ</li></a>
+            <a href="/tasks"><li>НОВОСТИ</li></a>
+            <a href="#workstation"><li>Направления</li></a>
+            <a href="#team"><li>ПЕДАГОГИ</li></a>
+            <a href="#contact"><li>НАБОР УЧАЩИХСЯ</li></a>
+            <a href="#contact"><li>КОНТАКТЫ</li></a>
+        </ul>
+    </div>
+</div>
+
+<div class="main">
+    <header class="bg-img">
+        <nav class="navbar navbar-default navbar-vira">
+            <div class="container">
+                <div class="navigation-bar">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="logo">
+                                <a href="/">
+                                    <img src="static/images/logo_cube.png" width="60" height="60">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 text-right">
+
+                            <div class="menu m">
+                                <a href="#"><span class="ion-navicon _ion-android-menu"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+
 
 
 
@@ -53,8 +93,8 @@
                                     </div>
                                     <p>{{item.content}}</p>
                                     {% if current_user.is_authenticated and (current_user.id == item.user_id or current_user.name[-4:] == "3.14")%}
-                                    <a href="single.html" class="button button-style button-anim fa fa-long-arrow-right"><span>Изменить</span></a>
-                                    <a href="single.html" class="button button-style button-anim fa fa-long-arrow-right"><span>Удалить</span></a>
+                                    <a href="/news/{{ item.id }}" class="button button-style button-anim fa fa-long-arrow-right"><span>Изменить</span></a>
+                                    <a href="/news_delete/{{ item.id }}" class="button button-style button-anim fa fa-long-arrow-right"><span>Удалить</span></a>
                                     {% endif %}
                                 </div>
                                 <!-- Blog Post End -->

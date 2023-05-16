@@ -63,7 +63,7 @@ def reqister():
     return render_template('register.html', title='Регистрация', form=form)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -160,70 +160,6 @@ def tasks():
     return render_template("tasks.html", news=news, quest=quest)
 
 
-@app.route('/comment/<int:id>', methods=['GET', 'POST'])
-def comment(id):
-    db_sess = db_session.create_session()
-    quest = db_sess.query(Quest).filter(Quest.news_id == id)
-    return render_template("comment.html", news=quest)
-
-
-@app.route('/quest/<int:id>', methods=['GET', 'POST'])
-@login_required
-def quest(id):
-    form = QuestsForm()
-    if request.method == "GET":
-        print('Зашёл в метод GET')
-        db_sess = db_session.create_session()
-        quest = db_sess.query(Quest).filter(News.id == id
-                                            ).first()
-        if quest:
-            print('Зашёл в проверку if quest внутри GET')
-            form.content.data = quest.content
-            form.user_id.data = quest.user_id
-        else:
-            print('Зашёл в проверку else внутри GET')
-            abort(404)
-
-    print('Вышел из GET')
-
-    print(form.validate_on_submit())
-
-    if form.validate_on_submit():
-        print('Зашёл в валидатор')
-        db_sess = db_session.create_session()
-        quest = db_sess.query(Quest).filter(Quest.id == id
-                                            ).first()
-        if quest:
-            quest.content = form.content.data
-            quest.user_id = form.user_id.data
-            db_sess.commit()
-            return redirect('/tasks')
-        else:
-            abort(404)
-    return render_template('quest.html',
-                           title='Отправить ответ',
-                           form=form
-                           )
-
-
-@app.route('/quests/<int:id>', methods=['GET', 'POST'])
-@login_required
-def add_quest(id):
-    form = QuestsForm()
-    if form.validate_on_submit():
-        db_sess = db_session.create_session()
-        quest = Quest()
-        quest.content = form.content.data
-        quest.news_id = id
-        print(quest.content, id, sep='\n')
-        current_user.quest.append(quest)
-        db_sess.merge(current_user)
-        db_sess.commit()
-        return redirect('/tasks')
-    return render_template('quest.html', title='Добавление Комментария',
-                           form=form)
-
-
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
@@ -239,18 +175,6 @@ def logout():
 
 
 if __name__ == '__main__':
-    # api.add_resource(news_resources.NewsListResource, '/api/v2/news')
-    #
-    # api.add_resource(news_resources.NewsResource, '/api/v2/news/<int:news_id>')
-    #
-    # api.add_resource(quests_resource.QuestListResource, '/api/v2/quest')
-    #
-    # api.add_resource(quests_resource.QuestResource, '/api/v2/quest/<int:news_id>')
-    #
-    # api.add_resource(us_re.UsersListResource, '/api/v2/users')
-    #
-    # api.add_resource(us_re.UsersResource, '/api/v2/users/<int:user_id>')
-    #
     db_session.global_init("db/blogs.db")
 
     app.run(debug=True)

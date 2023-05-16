@@ -5,12 +5,12 @@
 <div id="menu-item" class="menu-item hide-menu">
     <div class="container">
         <ul>
-            <a href="index.html"><li>ОБ ОРГАНИЗАЦИИ</li></a>
+            <a href="/"><li>ОБ ОРГАНИЗАЦИИ</li></a>
             <a href="#about"><li>ИНФОРМАЦИЯ</li></a>
             <a href="/tasks"><li>НОВОСТИ</li></a>
             <a href="#workstation"><li>Направления</li></a>
             <a href="#team"><li>ПЕДАГОГИ</li></a>
-            <a href="#contact"><li>НАБОР УЧАЩИХСЯ</li></a>
+            <a href="https://vk.com/itcube_vurnary?w=wall-198282945_601"><li>НАБОР УЧАЩИХСЯ</li></a>
             <a href="#contact"><li>КОНТАКТЫ</li></a>
         </ul>
     </div>
@@ -29,35 +29,7 @@
                             </div>
                         </div>
                         <div class="col-xs-6 text-right">
-                            {% if current_user.is_authenticated %}
 
-                            <div class="collapse navbar-collapse" id="navbarResponsive">
-						        <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-							        		{% if current_user.name[-4:] == "3.14"%}
-							        			<a class="navbar-brand nav-link big-font-size" href="">{{ current_user.name[:-4]}}</a>
-							        		{% else %}
-							        		    <a class="navbar-brand nav-link big-font-size" href="">{{ current_user.name}}</a>
-							        		{% endif %}
-                                    </li>
-                                    <li class="nav-item">
-									    <a class="navbar-brand nav-link big-font-size" href="/logout">Выход</a>
-								    </li>
-                                </ul>
-					        </div>
-                            {% else %}
-
-                            <div class="collapse navbar-collapse" id="navbarResponsive">
-						        <ul class="navbar-nav ml-auto">
-						        	<li class="nav-item">
-						        		<a href="/register" class="nav-link big-font-size btn btn-primary">Зарегистрироваться</a>
-						        	</li>
-						        	<li class="nav-item">
-						        		<a href="/login" class="nav-link big-font-size btn btn-success">Войти</a>
-						        	</li>
-						        </ul>
-					        </div>
-                            {% endif %}
                             <div class="menu m">
                                 <a href="#"><span class="ion-navicon _ion-android-menu"></span></a>
                             </div>
@@ -144,7 +116,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="for_img">
-                    <img src="static/images/friends.jpg">
+                    <img src="static/images/friends2.jpg">
                 </div>
                 <div class="col-sm-5 section">
                     <h2 class="title">Партнеры</h2>
@@ -189,7 +161,7 @@
                         </div>
                         <div class="vira-card-content">
                             <h3>Основы программирования на Java</h3>
-                            <p>
+                             <p>
                                 Задача программиста Java — написать новый код, чтобы мобильное приложение, мессенджер или веб-сайт могли работать. Также специалисты сотрудничают с дизайнерами, project-менеджерами, тестировщиками и другими техническими членами команды.
                             </p>
                         </div>
@@ -333,7 +305,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/9.jpg">
+                            <img class="img-responsive" src="static/images/kazenovairina.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Казенова Ирина Петровна</h3>
@@ -346,7 +318,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/9.jpg">
+                            <img class="img-responsive" src="static/images/mneykinaanastasia.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Мнейкина Анастасия Александровна</h3>
@@ -359,20 +331,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/9.jpg">
-                        </div>
-                        <div class="vira-card-content">
-                            <h3>Павлова Екатерина Сергеевна</h3>
-                            <p>
-                                Педагог дополнительного образования
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="vira-card">
-                        <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/9.jpg">
+                            <img class="img-responsive" src="static/images/repinanatoliy.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Репин Анатолий Владимирович</h3>
@@ -385,7 +344,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/9.jpg">
+                            <img class="img-responsive" src="static/images/narishkinpavel.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Нарышкин Владимир Александрович</h3>
@@ -398,7 +357,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/9.jpg">
+                            <img class="img-responsive" src="static/images/vasilevayulya.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Васильева Юлия Александровна</h3>
@@ -411,7 +370,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/10.jpg">
+                            <img class="img-responsive" src="static/images/trofimovakristina.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Трофимова Кристина Сергеевна</h3>
@@ -424,7 +383,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/10.jpg">
+                            <img class="img-responsive" src="static/images/nikitinaleksandr.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Никитин Александр Николаевич</h3>
@@ -437,20 +396,7 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/10.jpg">
-                        </div>
-                        <div class="vira-card-content">
-                            <h3>Глухов Владимир Анатольевич</h3>
-                            <p>
-                                Педагог дополнительного образования
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="vira-card">
-                        <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/10.jpg">
+                            <img class="img-responsive" src="static/images/chermakovvladimir.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Чермаков Владимир Сергеевич</h3>
@@ -476,7 +422,20 @@
                 <div class="col-sm-4">
                     <div class="vira-card">
                         <div class="vira-card-header">
-                            <img class="img-responsive" src="static/images/10.jpg">
+                            <img class="img-responsive" src="static/images/pavlovaekaterina.jpg">
+                        </div>
+                        <div class="vira-card-content">
+                            <h3>Павлова Екатерина Сергеевна</h3>
+                            <p>
+                                Педагог дополнительного образования
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="vira-card">
+                        <div class="vira-card-header">
+                            <img class="img-responsive" src="static/images/petrichenkopetr.jpg">
                         </div>
                         <div class="vira-card-content">
                             <h3>Петриченко Петр Александрович</h3>
